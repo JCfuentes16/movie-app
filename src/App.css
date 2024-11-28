@@ -1,38 +1,64 @@
-.App {
+body {
+  background-color: #141414;
+  color: #ecb816;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Create 2 columns */
+  gap: 20px; /* Space between items */
+}
+
+.movie-item {
+  background: #1f1f1f;
+  padding: 10px;
+  border-radius: 8px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-poster {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h3 {
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
 }
 
-.App-header {
-  background-color: #282c34;
+p {
+  font-size: 0.9rem;
+}
+
+/* App.css */
+
+.app-container {
+  padding: 20px;
+  background-color: #141414; /* Black background */
+  color: #ecb816; /* Yellow text */
   min-height: 100vh;
+}
+
+.header-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ecb816; /* Yellow border */
+  border-radius: 4px;
+  background-color: #1e1e1e; /* Dark background for input */
+  color: #ecb816; /* Yellow text */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input::placeholder {
+  color: #ecb816;
 }

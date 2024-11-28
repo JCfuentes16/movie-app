@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import MovieList from "./MovieList";
+import MovieHeader from "./MovieHeader";
+import SearchBox from "./SearchBox";
 
-function App() {
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [SearchBar, SetSearchBar] = useState("");
+
+  const getMoviesRequest = async () => {
+    const url = `http://www.omdbapi.com/?s=${SearchBar}&apikey=3cba4720`;
+
+    try {
+      const response = await fetch(url);
+      const responseJson = await response.json();
+
+      if (responseJson.Search) {
+        setMovies(responseJson.Search);
+      } else {
+        console.log("No movies found");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    getMoviesRequest(SearchBar);
+  }, [SearchBar]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <div className="header-container">
+        <MovieHeader heading="Movies" />
+        <SearchBox SearchBar={SearchBar} SetSearchBar={SetSearchBar} />
+      </div>
+      <MovieList movies={movies} />
     </div>
   );
-}
+};
 
 export default App;
