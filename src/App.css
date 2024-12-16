@@ -7,8 +7,16 @@ body {
 
 .movie-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Create 2 columns */
-  gap: 20px; /* Space between items */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .movie-list {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+  }
 }
 
 .movie-item {
@@ -16,6 +24,7 @@ body {
   padding: 10px;
   border-radius: 8px;
   text-align: center;
+  cursor: pointer;
 }
 
 .movie-poster {
@@ -38,8 +47,8 @@ p {
 
 .app-container {
   padding: 20px;
-  background-color: #141414; /* Black background */
-  color: #ecb816; /* Yellow text */
+  background-color: #141414;
+  color: #ecb816;
   min-height: 100vh;
 }
 
@@ -53,12 +62,44 @@ p {
 input {
   padding: 8px 12px;
   font-size: 16px;
-  border: 1px solid #ecb816; /* Yellow border */
+  border: 1px solid #ecb816;
   border-radius: 4px;
-  background-color: #1e1e1e; /* Dark background for input */
-  color: #ecb816; /* Yellow text */
+  background-color: #1e1e1e;
+  color: #ecb816;
 }
 
 input::placeholder {
   color: #ecb816;
+}
+
+.movie-description {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #141414;
+  color: #ecb816;
+  padding: 20px;
+  border: 2px solid #ecb816;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.movie-description img {
+  width: 200px;
+  margin-top: 10px;
+}
+
+.close-button {
+  background-color: #ecb816;
+  color: #141414;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.close-button:hover {
+  background-color: #d1a914;
 }
